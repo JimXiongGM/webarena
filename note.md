@@ -1,6 +1,6 @@
 # note
 
-minimal_example.py 能跑，直接调用作者的机器就行。
+minimal_example.py 直接调用作者的机器就行，结果不对，都是空的。
 
 步骤：
 

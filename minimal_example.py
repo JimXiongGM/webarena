@@ -9,7 +9,6 @@ def set_envs():
     os.environ["http_proxy"] = "http://localhost:7893"
     os.environ["https_proxy"] = "http://localhost:7893"
 
-    SLEEP = 1.5
     # set the URLs of each website, we use the demo sites as an example
     os.environ[
         "SHOPPING"
@@ -73,6 +72,8 @@ def run():
     )
     from evaluation_harness.evaluators import evaluator_router
 
+    SLEEP = 1.5
+
     # Init the environment
     env = ScriptBrowserEnv(
         headless=True,
@@ -89,6 +90,8 @@ def run():
 
     # set the environment for the current example
     obs, info = env.reset(options={"config_file": config_file})
+
+    # headless=True 之后 这里是空的。
     actree_obs = obs["text"]
     print(actree_obs)
 
@@ -158,5 +161,5 @@ def run():
 
 if __name__ == "__main__":
     set_envs()
-    _prepare()
+    # _prepare()
     run()
