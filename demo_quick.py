@@ -1,9 +1,16 @@
 from browser_env import ScriptBrowserEnv, create_id_based_action
 import random
 
+from minimal_example import set_envs
+
+"""
+能运行
+"""
+
+set_envs()
 # init the environment
 env = ScriptBrowserEnv(
-    headless=False,
+    headless=True,
     observation_type="accessibility_tree",
     current_viewport_only=True,
     viewport_size={"width": 1280, "height": 720},
@@ -15,7 +22,9 @@ obs, info = env.reset(options={"config_file": config_file})
 
 # create a random action
 id = random.randint(0, 1000)
-action = create_id_based_action(f"click [id]")
+action = create_id_based_action(f"click [{id}]")
 
 # take the action
 obs, _, terminated, _, info = env.step(action)
+
+print(obs)
