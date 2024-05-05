@@ -1,11 +1,12 @@
-#!/usr/bin/env python3
-# type: ignore
-
 import json
 import os
 import re
 import subprocess
 import time
+
+# setproxy
+os.environ["http_proxy"] = "http://localhost:7893"
+os.environ["https_proxy"] = "http://localhost:7893"
 
 SLEEP = 1.5
 # set the URLs of each website, we use the demo sites as an example
@@ -70,7 +71,7 @@ from evaluation_harness.evaluators import evaluator_router
 
 # Init the environment
 env = ScriptBrowserEnv(
-    headless=False,
+    headless=True,
     slow_mo=100,
     observation_type="accessibility_tree",
     current_viewport_only=True,
